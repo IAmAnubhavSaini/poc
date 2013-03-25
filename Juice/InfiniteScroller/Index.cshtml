@@ -1,0 +1,52 @@
+﻿
+<div id="LoadedImages"></div>
+
+    <script type="text/ecmascript">
+        $(function () {
+        var loadNext = function (size, num) {
+            $.ajax({
+                url: '/home/photos',
+                data: { 'ps': size, 'pn': num },
+                type: 'POST',
+                success: function (result) {
+                    console.log(result); //alert('done');
+                    $.each(result, function (k, v) {
+                        console.log(v.id);
+                        $('#LoadedImages').append('<img id="' + v.id + '" src="' + v.name + '" class="loaded-images" /><br />');
+                    });
+                },
+                error: function (r, s, e) { console.log(e); alert('fuss...'); }
+            });
+            if (num === 0) {
+                $('#LoadedImages').append('<div id="clickToLoad">Click to load more</div>');
+                $('#clickToLoad').click(function () { scrollToLoadState = 1;});
+            }
+            else {
+                $('#LoadedImages').remove('#clickToLoad');
+            }
+        };
+        var scrollLoad = function () {
+            var loadedImagesCount = $('.loaded-images').length;
+            //console.log(loadedImagesCount);
+            var size = 10;
+            var pageNum = Math.floor(loadedImagesCount / size);// console.log(pageNum);
+            var currentScrollDraggerPosition = $(window).scrollTop(); //console.log("current scroller position: "+currentScrollDraggerPosition);
+            var documentHeight = $(document).height(); //console.log("current document height: "+documentHeight);
+            var windowHeight = $(window).height(); //console.log("current window height: " + windowHeight);
+            //console.log("doc h - scroller pos: " + (parseInt(documentHeight) - parseInt(currentScrollDraggerPosition)).toString());
+            if (documentHeight - currentScrollDraggerPosition < windowHeight*2) {
+                loadNext(size, pageNum);//because pageNum is offset from 0th place
+            }
+        };
+        
+            loadNext(10, 0);
+
+            var scrollToLoadState = 0;
+            if (scrollToLoadState) {
+                $(window).scroll(function () {
+                    scrollLoad();
+                });
+            }
+        });
+    </script>
+
