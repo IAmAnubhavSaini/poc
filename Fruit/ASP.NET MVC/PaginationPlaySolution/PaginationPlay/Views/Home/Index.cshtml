@@ -1,0 +1,20 @@
+﻿@model PaginationPlay.Models.DataModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<fieldset>
+    <legend>Days of week</legend>
+
+    @foreach (var item in Model.Days)
+    {
+        <div>@item</div>
+    }
+
+</fieldset>
+
+@Html.Partial("Pagination", Model.Page)

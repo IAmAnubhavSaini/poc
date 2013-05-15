@@ -1,0 +1,27 @@
+﻿@model PaginationPlay.Models.PageModel
+
+@if (Model.Page.TotalRecords > 0)
+{
+    <fieldset>
+        <legend>Page info</legend>
+        <div>Page index: @Model.Page.PageIndex</div>
+        <div>Page size: @Model.Page.PageSize</div>
+        <div>Total records: @Model.Page.TotalRecords</div>
+        <div>Total pages: @Model.Page.PageCount</div>
+        <hr />
+        @using (Html.BeginForm("index","home",FormMethod.Post))
+        {
+            <label>Page index: </label>@Html.TextBoxFor(m => m.Page.PageIndex, Model.Page.PageIndex)
+            <label>Page size: </label>@Html.TextBoxFor(m => m.Page.PageSize, Model.Page.PageSize)
+            @Html.HiddenFor(m=>m.Page.TotalRecords, Model.Page.TotalRecords)
+            @Html.HiddenFor(m=>m.Page.PageCount, Model.Page.PageCount)
+            <input type="submit" value="submit" />
+        }
+    </fieldset>
+    
+
+}
+else
+{
+    <div># zero records - no pagination #</div>
+}
