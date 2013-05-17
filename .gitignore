@@ -5,6 +5,10 @@
 *.pdb
 *.nupkg
 *.nuspec
-/obj/Degub/*.*
-/obj/Releas/*.*
-/bin/*.*
+*/obj/Degub/*.*
+*/obj/Releas/*.*
+*/bin/*.*
+obj/
+bin/
+/packages/
+packages/
