@@ -1,6 +1,6 @@
 ﻿using PaginationPlay.Models;
 using System.Web.Mvc;
-
+using Pagination;
 namespace PaginationPlay.Controllers
 {
     public class HomeController : Controller
@@ -12,9 +12,9 @@ namespace PaginationPlay.Controllers
             service = new DataService();
         }
 
-        public ActionResult Index(PageModel model)
+        public ActionResult Index(PageBase model)
         {
-            model = (model == null )? new PageModel() : model;
+            model = (model == null) ? new PageBase() : model;
             DataModel dataModel = service.GetDays(model);
             return View(dataModel);
         }

@@ -17,4 +17,11 @@
 
 </fieldset>
 
-@Html.Partial("Pagination", Model.Page)
+@Html.Partial("Pagination", new Pagination.PageBase()
+{
+    PageIndex = Model.Page.PageIndex,
+
+    PageSize = Model.Page.PageSize,
+    TotalRecords = Model.Page.TotalRecords
+
+})

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Pagination;
 namespace PaginationPlay.Models
 {
     public interface IDataService
     {
         DataModel GetAllDays();
-        DataModel GetDays(PageModel page);
+        DataModel GetDays(PageBase page);
     }
     public class DataService : IDataService
     {
@@ -17,7 +17,7 @@ namespace PaginationPlay.Models
             return model;
         }
 
-        public DataModel GetDays(PageModel page)
+        public DataModel GetDays(PageBase page)
         {
             DataModel model = new DataModel(page);
             return model;
@@ -26,19 +26,19 @@ namespace PaginationPlay.Models
     public class DataModel
     {
         public List<string> Days { get; set; }
-        public PageModel Page { get; set; }
+        public PageBase Page { get; set; }
         
         public DataModel()
         {
             Days = Data.GetDaysOfWeek();
-            Page = new PageModel();
-            Page.Page.TotalRecords = Days.Count;
+            Page = new PageBase();
+            Page.TotalRecords = Days.Count;
         }
-        public DataModel(PageModel page)
+        public DataModel(PageBase page)
         {
-            Days = Data.GetDays(page.Page);
-            page.Page.TotalRecords = Data.GetDaysOfWeek().Count;
-            Page = new PageModel(page.Page);
+            Days = Data.GetDays(page);
+            page.TotalRecords = Data.GetDaysOfWeek().Count;
+            Page = page;
         }
     }
 
@@ -61,7 +61,7 @@ namespace PaginationPlay.Models
             return Enum.GetNames(typeof(DaysOfWeek)).ToListString();
         }
 
-        public static List<string> GetDays(Pagination page)
+        public static List<string> GetDays(PageBase page)
         {
             int skip = page.PageIndex > page.PageCount ? 0 : page.PageSize.Value * (page.PageIndex.Value - 1);
 

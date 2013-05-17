@@ -15,7 +15,10 @@ namespace PaginationPlay.Models
                 return int.Parse(value);
             }
         }
-
+        public static int ToInt(this double value)
+        {
+            return int.Parse(value.ToString());
+        }
         public static List<string> ToListString(this string[] values)
         {
             List<string> result = new List<string>();

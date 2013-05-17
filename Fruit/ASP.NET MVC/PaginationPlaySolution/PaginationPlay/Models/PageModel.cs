@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using Pagination;
 namespace PaginationPlay.Models
 {
     public class PageModel
     {
-        public Pagination Page { get; set; }
+        public PageBase Page { get; set; }
         public PageModel()
         {
-            Page = new Pagination();
+            Page = new PageBase();
         }
-        public PageModel(Pagination page)
+        public PageModel(PageBase page)
         {
-            this.Page = new Pagination(page.PageIndex, page.PageSize, page.PageActionLink, page.TotalRecords, page.LinkPageAtATime, page.ShowItemPerPageOption);
+            this.Page = new PageBase(page.PageIndex, page.PageSize, page.PageActionLink, page.TotalRecords, page.LinkPageAtATime, page.ShowItemPerPageOption);
             this.Page.PageIndex = (Page.PageIndex > Page.PageCount) ? 1 : Page.PageIndex;
         }
 

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace PaginationPlay.Models
+namespace Pagination
 {
-    public class Pagination
+    public class PageBase
     {
+        
         #region private
         
         private const int DEFAULT_PAGE_COUNT = 1;
@@ -87,7 +89,7 @@ namespace PaginationPlay.Models
                     {
                         return PageCount.Value - LinkPageAtATime.Value - 1;
                     }
-                    return Math.Ceiling((double)PageIndex.Value - (LinkPageAtATime.Value / 2)).ToInt();//<= 1 ? 1 : PageIndex.Value - (LinkPageAtATime.Value / 2);
+                    return int.Parse(Math.Ceiling((double)PageIndex.Value - (LinkPageAtATime.Value / 2)).ToString());//<= 1 ? 1 : PageIndex.Value - (LinkPageAtATime.Value / 2);
                 }
                 else
                 {
@@ -143,21 +145,21 @@ namespace PaginationPlay.Models
         {
             get
             {
-                return StartIndex + (_linkPageAtATime.Value/2) <= this.PageCount.Value ? StartIndex + _linkPageAtATime.Value-1 : this.PageCount.Value;
+                return StartIndex + (_linkPageAtATime.Value / 2) <= this.PageCount.Value ? StartIndex + _linkPageAtATime.Value - 1 : this.PageCount.Value;
             }
         }
         #endregion
 
         #region constructor
 
-        public Pagination()
+        public PageBase()
         {
             PageIndex = 1;
             PageSize = _pageSize;
         }
-        public Pagination(int? pageIndex) : this(pageIndex, null) { }
-        public Pagination(int? pageIndex, int? pageSize) : this(pageIndex, pageSize, null, null, null, false){ }
-        public Pagination(int? pageIndex, int? pageSize, string pageActionLink, int? totalRecords, int? linkPageAtATime, bool showItemPerPageOption)
+        public PageBase(int? pageIndex) : this(pageIndex, null) { }
+        public PageBase(int? pageIndex, int? pageSize) : this(pageIndex, pageSize, null, null, null, false){ }
+        public PageBase(int? pageIndex, int? pageSize, string pageActionLink, int? totalRecords, int? linkPageAtATime, bool showItemPerPageOption)
         {
             PageIndex = pageIndex;
             PageSize = pageSize;
@@ -170,9 +172,9 @@ namespace PaginationPlay.Models
 
         #region Methods
 
-        public Pagination CopyNonCalculationProperties(Pagination page)
+        public PageBase CopyNonCalculationProperties(PageBase page)
         {
-            return  new Pagination(page.PageIndex,page.PageSize, page.PageActionLink, page.TotalRecords, page.LinkPageAtATime, page.ShowItemPerPageOption);
+            return new PageBase(page.PageIndex, page.PageSize, page.PageActionLink, page.TotalRecords, page.LinkPageAtATime, page.ShowItemPerPageOption);
         }
 
         #endregion
