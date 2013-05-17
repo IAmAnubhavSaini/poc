@@ -2,3 +2,9 @@
 *.exe
 *.dll
 *.user
+*.pdb
+*.nupkg
+*.nuspec
+/obj/Degub/*.*
+/obj/Releas/*.*
+/bin/*.*
