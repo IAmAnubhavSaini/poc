@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <h1>@Plurals.RecordsMessage(ViewBag.R1.Count)</h1>
+    <ul>
+        @foreach (var item in ViewBag.R1)
+        {
+            <li>@item</li>
+        }
+    </ul>
+
+    <h1>@Plurals.RecordsMessage(ViewBag.R2.Count)</h1>
+    <ul>
+        @foreach (var item in ViewBag.R2)
+        {
+            <li>@item</li>
+        }
+    </ul>
+
+    <h1>@Plurals.RecordsMessage(ViewBag.R3.Count)</h1>
+    <ul>
+        @foreach (var item in ViewBag.R3)
+        {
+            <li>@item</li>
+        }
+    </ul>
+
+
+</body>
+</html>

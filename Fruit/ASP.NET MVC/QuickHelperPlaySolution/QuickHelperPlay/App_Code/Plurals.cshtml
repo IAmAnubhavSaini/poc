@@ -1,0 +1,17 @@
+﻿@helper RecordsMessage(int count)
+{
+    string result = "";
+   
+        if (count > 0)
+        {
+            if (count > 1) { result = string.Format("{0} records fetched.", count); }
+            else { result = string.Format("{0} record fetched.", count); }
+        }
+        else
+        {
+           result= string.Format("No record fetched.");
+        }
+    @result
+}
+
+@*Usage : <h1>@Plurals.RecordsMessage(Model.Result.Count)</h1>*@
