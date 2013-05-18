@@ -1,0 +1,41 @@
+﻿@model IEnumerable<LazyPlay.Models.Nation>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LazyIndex</title>
+</head>
+<body>
+   
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NationCapitalName)
+            </th>
+            
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NationCapitalName)
+            </td>
+            
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
