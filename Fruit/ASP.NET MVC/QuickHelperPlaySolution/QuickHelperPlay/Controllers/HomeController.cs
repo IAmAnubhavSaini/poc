@@ -18,6 +18,9 @@ namespace QuickHelperPlay.Controllers
             ViewBag.R3 = new List<string> { "one", "two", "three" };
             return View();
         }
-
+        public ActionResult Text()
+        {
+            return View();
+        }
     }
 }

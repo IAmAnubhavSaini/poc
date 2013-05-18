@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Text</title>
+</head>
+<body>
+    <div>
+        @TextHelpers.Enlimiter(20, "We would walk 100 miles")
+    </div>
+    <div>
+        @TextHelpers.Enlimiter(20, "We would walk 100 miles", " more.", 6)
+    </div>
+    <div>
+        @TextHelpers.Enlimiter(15, "We would walk 100 miles")
+    </div>
+    <div>
+        @TextHelpers.Enlimiter(10, "We would walk 100 miles")
+    </div>
+</body>
+</html>

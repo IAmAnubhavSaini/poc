@@ -1,0 +1,13 @@
+﻿@helper Enlimiter(int limit, string message, string messageEnd = "...", int limitReduction = 3)
+{
+    string nMsg = "";
+    if (message.Length <= limit)
+    {
+        nMsg = message;
+    }
+    else
+    {
+        nMsg = message.Substring(0, limit - limitReduction) + messageEnd;
+    }
+     @nMsg   
+}
