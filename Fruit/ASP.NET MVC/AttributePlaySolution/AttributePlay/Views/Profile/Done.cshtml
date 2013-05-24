@@ -1,0 +1,58 @@
+﻿@model AttributePlay.Models.PersonModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Done</title>
+</head>
+<body>
+    <fieldset>
+        <legend>PersonModel</legend>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Name)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Age)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Age)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Nationality)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Nationality)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.LowBid)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LowBid)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.HighBid)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.HighBid)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "AddProfile", new { id=Model.Id }) |
+        @Html.ActionLink("Back to List", "Init")
+    </p>
+</body>
+</html>
